@@ -108,7 +108,7 @@ public class UserService {
         userToDelete.setActive(false);
         userToDelete.setUpdatedAt(new Date());
         log.info("User with email {} has been deleted successfully",email);
-        return new ResponseDTO(new ResponseMessageDTO("User deleted successfully"),user, StatusCodeEnum.SUCCESS,HttpStatus.OK);
+        return new ResponseDTO(new ResponseMessageDTO("User deleted successfully"),user.getResult(), StatusCodeEnum.SUCCESS,HttpStatus.OK);
     }
 
 }
