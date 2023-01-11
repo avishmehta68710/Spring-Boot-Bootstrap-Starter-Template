@@ -18,8 +18,8 @@ public class UserController {
     @Autowired
     UserService userService;
     @GetMapping(Endpoints.UserAPI.USER)
-    public ResponseDTO getAllUsers(@RequestParam boolean isActive){
-        log.info("{} api called",Endpoints.UserAPI.USER);
+    public ResponseDTO getAllUsers(@RequestParam(value = "isActive",defaultValue = "true",required = false) boolean isActive){
+        log.info("{}{} api called",Endpoints.UserAPI.BASE_URL,Endpoints.UserAPI.USER);
         try{
             return userService.getAllUsers(isActive);
         } catch (Exception e){
@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping(Endpoints.UserAPI.USER_BY_EMAIL)
     public ResponseDTO getUserByEmail(@RequestParam String email){
-        log.info("{} api called",Endpoints.UserAPI.USER_BY_EMAIL);
+        log.info("{}{} api called",Endpoints.UserAPI.BASE_URL,Endpoints.UserAPI.USER_BY_EMAIL);
         try{
             return userService.getUserByEmail(email);
         } catch (Exception e){
@@ -41,7 +41,7 @@ public class UserController {
 
     @PostMapping(Endpoints.UserAPI.ADD_USER)
     public ResponseDTO addUser(@RequestBody UserModel newUser){
-        log.info("{} api called",Endpoints.UserAPI.ADD_USER);
+        log.info("{}{} api called",Endpoints.UserAPI.BASE_URL,Endpoints.UserAPI.ADD_USER);
         try{
             return userService.addUser(newUser);
         } catch (Exception e){
@@ -52,7 +52,7 @@ public class UserController {
 
     @PutMapping(Endpoints.UserAPI.UPDATE_USER)
     public ResponseDTO updateUserByEmail(@RequestParam String email, @RequestBody UpdateUserDTO newUserDetails){
-        log.info("{} api called",Endpoints.UserAPI.UPDATE_USER);
+        log.info("{}{} api called",Endpoints.UserAPI.BASE_URL,Endpoints.UserAPI.UPDATE_USER);
         try{
             if (newUserDetails == null){
                 log.error("Invalid request body");
@@ -67,7 +67,7 @@ public class UserController {
 
     @DeleteMapping(Endpoints.UserAPI.DELETE_USER_BY_EMAIL)
     public ResponseDTO deleteUserByEmail(@RequestParam String email){
-        log.info("{} api called",Endpoints.UserAPI.DELETE_USER_BY_EMAIL);
+        log.info("{}{} api called",Endpoints.UserAPI.BASE_URL,Endpoints.UserAPI.DELETE_USER_BY_EMAIL);
         try{
             return userService.deleteUserByEmail(email);
         } catch (Exception e){
