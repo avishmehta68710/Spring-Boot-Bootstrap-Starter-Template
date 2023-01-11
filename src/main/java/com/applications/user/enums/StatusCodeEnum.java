@@ -1,11 +1,11 @@
 package com.applications.user.enums;
 
 public enum StatusCodeEnum {
-    SUCCESS(2000),
-    BAD_REQUEST(4400),
-    FORBIDDEN(4403),
-    UNAUTHORIZED(4404),
-    INTERNAL_SERVER_ERROR(5000)
+    SUCCESS(6000),
+    BAD_REQUEST(6400),
+    FORBIDDEN(6403),
+    UNAUTHORIZED(6404),
+    INTERNAL_SERVER_ERROR(6500)
     ;
 
     private final int statusCodeValue;
